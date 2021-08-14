@@ -1,10 +1,11 @@
 #include "shell.h"
 
-
 /**
- * ignore_space - return string without spaces in front
+ *
+ * ignore_space - returns string without spaces in front
  * @str: string
- * Return: new string
+ * Return: a
+new string
  */
 char *ignore_space(char *str)
 {
