@@ -1,4 +1,7 @@
-**
+#include "shell.h"
+
+
+/**
  * ignore_space - return string without spaces in front
  * @str: string
  * Return: new string
