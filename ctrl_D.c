@@ -1,3 +1,5 @@
+#include "shell.h"
+
 /**
  * ctrl_D - exits program if Ctrl-D was pressed
  * @i: characters read via get_line
