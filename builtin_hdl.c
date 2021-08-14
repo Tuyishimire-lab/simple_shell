@@ -1,3 +1,6 @@
+#include "shell.h"
+
+
 /**
  * built_in - handles builtins (exit, env, cd)
  * @token: user's typed command
