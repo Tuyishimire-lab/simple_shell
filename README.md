@@ -5,11 +5,17 @@ A shell in a linux operating system takes input from you in the form of command 
 **PURPOSE**
 
 The purpose of the simple shell project is to understand:
+
 >How a shell works
+
 >PID and PPIDs
+
 >How processes are created
+
 >The three prototypes of a main
+
 >How the shell uses PATH to find and execute programs
+
 >The end of file condition
 
 **_COMPILATION_**
