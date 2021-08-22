@@ -7,16 +7,16 @@
  */
 list_t *env_linked_list(char **env)
 {
-        list_t *head;
-        int i = 0;
+	list_t *head;
+	int i = 0;
 
-        head = NULL;
-        while (env[i] != NULL)
-        {
-                add_end_node(&head, env[i]);
-                i++;
-        }
-        return (head);
+	head = NULL;
+	while (env[i] != NULL)
+	{
+	add_end_node(&head, env[i]);
+	i++;
+	}
+	return (head);
 }
 
 /**
@@ -27,8 +27,8 @@ list_t *env_linked_list(char **env)
  */
 int _env(char **str, list_t *env)
 {
-        free_double_ptr(str); /* frees user input */
-        print_list(env); /* prints env */
-        return (0);
+	free_double_ptr(str); /* frees user input */
+	print_list(env); /* prints env */
+	return (0);
 }
 
