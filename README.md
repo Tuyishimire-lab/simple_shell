@@ -22,7 +22,7 @@ The purpose of the simple shell project is to understand:
 
 gcc -Wall -Wextra -Werror -pendantic *.c -o shell
 
-**CCOMMAND EXECUTION**
+**COMMAND EXECUTION**
 
 After receiving a command, the simple shell will tokenize it into words using "" as a delimiter. With consideration of the index of the user input where the first word will be considered as the command and the rest will be its arguments.
 

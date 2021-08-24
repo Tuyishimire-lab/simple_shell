@@ -1,21 +1,21 @@
 Custom man page for our shell
 
 Simple shell is a command language interpreter that executes commands read
-from the standars input and due to the environment's built in variable the 
+from the standars input and due to the environment's built in variable the
 shell can be limited.
 
 It doesn't handle piping,redirecting,pattern matching,variable expansions and
 more other functions.
 
-Simple shell can be invoked when the user types ./simple_shell as well as 
+Simple shell can be invoked when the user types ./simple_shell as well as
 the shell shell can be invoked ia piping example:
-(echo "/bin/ls" | ./-simple_shell)
+(echo "/bin/ls" | ./simple_shell)
 
 So when the command have been splited into words and found out that its a
 simple command and an optional list of arguments, the following actions are
 taken.
 
-If the command name just from the user input doesn't containe  slashes 
+If the command name just from the user input doesn't containe  slashes
 the shell attemps to locate it and if it exist the it is invoked and when
 its not found there is a look on the shell main builtin's and if
 found in there it will be invoked there after if the none of the above
@@ -28,8 +28,8 @@ the file or directory not found.
 
 Some of the functions:
 >pwd(prints the working directory)
->whereis(prints the standard output which directory the function or shell 
-builtin can be found) 
+>whereis(prints the standard output which directory the function or shell
+builtin can be found)
 >cd(changes the working directory)
 >env(prints the environmental variables)
 >exit(exits from the simple shell out to the user's original shell)
