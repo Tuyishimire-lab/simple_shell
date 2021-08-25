@@ -12,23 +12,23 @@ char *c_strdup(char *str, int cs)
 	int i, len = 0;
 
 	if (str == NULL) /* validate str input */
-	return (NULL);
+		return (NULL);
 
-/* calculate len + null terminator to malloc */
+	/* calculate len + null terminator to malloc */
 	while (*(str + len))
-	len++;
+		len++;
 	len++;
 
-/* allocate memory but exclude environmental variable title (PATH) */
+	/* allocate memory but exclude environmental variable title (PATH) */
 	duplicate_str = malloc(sizeof(char) * (len - cs));
 	if (duplicate_str == NULL)
-	return (NULL);
+		return (NULL);
 
 	i = 0;
 	while (i < (len - cs))
 	{
-	*(duplicate_str + i) = *(str + cs + i);
-	i++;
+		*(duplicate_str + i) = *(str + cs + i);
+		i++;
 	}
 	return (duplicate_str);
 }
@@ -45,16 +45,16 @@ char *get_env(char *str, list_t *env)
 
 	while (env != NULL)
 	{
-	j = 0;
-	while ((env->var)[j] == str[j]) /* find desired env variable */
-	j++;
-	if (str[j] == '\0' && (env->var)[j] == '=')
-	break;
-	env = env->next;
+		j = 0;
+		while ((env->var)[j] == str[j]) /* find desired env variable */
+			j++;
+		if (str[j] == '\0' && (env->var)[j] == '=')
+			break;
+		env = env->next;
 	}
 
 	while (str[cs] != '\0') /* find how many bytes in env variable title */
-	cs++;
+		cs++;
 	cs++; /*counts 1 more for = sign*/
 	return (c_strdup(env->var, cs)); /* make a copy of variable w/o title */
 }
