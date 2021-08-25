@@ -12,6 +12,7 @@
 #include <fcntl.h>
 #include <dirent.h>
 #include <signal.h>
+#include <errno.h>
 
 /**
  * struct list - linked list for environmental variables

@@ -23,7 +23,6 @@ char *_strdup(char *str)
 		return (NULL);
 
 	i = 0;
-
 	while (i < len)
 	{
 		*(duplicate_str + i) = *(str + i);
@@ -32,4 +31,3 @@ char *_strdup(char *str)
 
 	return (duplicate_str);
 }
-

@@ -9,7 +9,7 @@
 char *c_ignore(char *str)
 {
 	while (*str == ' ' || *str == '\n')
-	str++;
+		str++;
 	return (str);
 }
 
@@ -27,14 +27,14 @@ void non_interactive(list_t *env)
 	i = get_line(&command);
 	if (i == 0)
 	{
-	free(command);
-	exit(0);
+		free(command);
+		exit(0);
 	}
 	n_command = command;
 	command = c_ignore(command);
 	n_line = _str_tok(command, "\n"); /* tokenize each command string */
 	if (n_command != NULL)
-	free(n_command);
+		free(n_command);
 	n = 0;
 	while (n_line[n] != NULL)
 	{
@@ -54,4 +54,3 @@ void non_interactive(list_t *env)
 	free_linked_list(env);
 	exit(exit_stat);
 }
-

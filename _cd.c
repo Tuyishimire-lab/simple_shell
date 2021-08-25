@@ -13,7 +13,7 @@ char *c_strcat(char *dest, char *src)
 	int total_len = 0;
 	int j = 0;
 
-/* find total length of both strings to _realloc */
+	/* find total length of both strings to _realloc */
 	while (dest[len] != '\0')
 	{
 		len++;
@@ -25,7 +25,7 @@ char *c_strcat(char *dest, char *src)
 		total_len++;
 	}
 
-/* _realloc because dest was malloced outside of function */
+	/* _realloc because dest was malloced outside of function */
 	dest = _realloc(dest, len, sizeof(char) * total_len + 1);
 
 	j = 1; /* ignore the first character */
@@ -59,7 +59,7 @@ int c_setenv(list_t **env, char *name, char *dir)
 	cat = _strcat(cat, dir);
 	index = find_env(*env, name); /* get idx to env var in linked list */
 
-/* traverse to idx, free node data, reassign data */
+	/* traverse to idx, free node data, reassign data */
 	holder = *env;
 	while (j < index)
 	{

@@ -13,20 +13,20 @@ void not_found(char *str, int c_n, list_t *env)
 
 	shell = get_env("_", env); /* get shell name to write */
 	while (shell[count] != '\0')
-	count++;
+		count++;
 	write(STDOUT_FILENO, shell, count);
 	free(shell);
 	write(STDOUT_FILENO, ": ", 2);
 	num = int_to_string(c_n); /* convert cmd line num to string to write */
 	count = 0;
 	while (num[count] != '\0')
-	count++;
+		count++;
 	write(STDOUT_FILENO, num, count);
 	free(num);
 	write(STDOUT_FILENO, ": ", 2);
 	count = 0;
 	while (str[count] != '\0')
-	count++;
+		count++;
 	write(STDOUT_FILENO, str, count);
 	write(STDOUT_FILENO, ": ", 2);
 	write(STDOUT_FILENO, "not found\n", 10);
@@ -95,4 +95,3 @@ void illegal_number(char *str, int c_n, list_t *env)
 	write(STDOUT_FILENO, str, count);
 	write(STDOUT_FILENO, "\n", 1);
 }
-

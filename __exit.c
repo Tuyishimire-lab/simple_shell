@@ -48,4 +48,3 @@ int __exit(char **str, list_t *env, int num, char **command)
 	free_double_ptr(command);
 	exit(e_value);
 }
-
