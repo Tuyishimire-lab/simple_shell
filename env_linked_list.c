@@ -13,8 +13,8 @@ list_t *env_linked_list(char **env)
 	head = NULL;
 	while (env[i] != NULL)
 	{
-	add_end_node(&head, env[i]);
-	i++;
+		add_end_node(&head, env[i]);
+		i++;
 	}
 	return (head);
 }
@@ -31,4 +31,3 @@ int _env(char **str, list_t *env)
 	print_list(env); /* prints env */
 	return (0);
 }
-
