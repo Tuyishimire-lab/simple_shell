@@ -9,10 +9,10 @@
  */
 int main(int ac, char **av, char **env)
 {
-        (void)ac;
-        (void)av;
+	(void)ac;
+	(void)av;
 
-        prompt(env);
+	prompt(env);
 
-        return (0);
+	return (0);
 }
