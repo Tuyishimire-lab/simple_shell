@@ -12,13 +12,13 @@ int find_env(list_t *env, char *str)
 
 	while (env != NULL)
 	{
-	j = 0;
-	while ((env->var)[j] == str[j]) /* find desired env variable */
-		j++;
-	if (str[j] == '\0') /* if matches entirely, break, return idx */
-		break;
-	env = env->next;
-	index++;
+		j = 0;
+		while ((env->var)[j] == str[j]) /* find desired env variable */
+			j++;
+		if (str[j] == '\0') /* if matches entirely, break, return idx */
+			break;
+		env = env->next;
+		index++;
 	}
 	if (env == NULL)
 		return (-1);
@@ -49,7 +49,6 @@ int _unsetenv(list_t **env, char **str)
 		return (-1);
 	}
 	j = delete_nodeint_at_index(env, index); /* delete node */
-
 	if (j == -1)
 	{
 		write(STDOUT_FILENO, "Cannot find\n", 12);
