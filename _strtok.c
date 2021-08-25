@@ -1,109 +1,83 @@
 #include "shell.h"
-
 /**
- * t_strlen - returns token's string length for mallocing
- * @str: a token
- * @pos: index position in user's command typed into shell
- * @delm: delimeter (e.g. " ");
- * Return: token length
+ * count_words - counts separate words in string
+ * @str: pointer to s
+ * @delim: delimiter
+ * Return: number of words
  */
-int t_strlen(char *str, int pos, char delm)
+int count_words(char *str, char delim)
 {
-	int len = 0;
+	int i, count;
 
-	while ((str[pos] != delm) && (str[pos] != '\0'))
-	{
-		pos++;
-		len++;
-	}
-	return (len);
-}
-
-/**
- * t_size - returns number of delim ignoring continuous delim
- * @str: user's command typed into shell
- * @delm: delimeter (e.g. " ");
- * Return: number of delims so that (num token = delims + 1)
- */
-int t_size(char *str, char delm)
-{
-	int i = 0, num_delm = 0;
-
+	i = 0;
+	count = 0;
 	while (str[i] != '\0')
 	{
-		if ((str[i] == delm) && (str[i + 1] != delm))
-		{
-			/* handle continuous delims */
-			num_delm++;
-		}
-		if ((str[i] == delm) && (str[i + 1] == '\0'))
-		{
-			/*handle continuous delims after full command */
-			num_delm--;
-		}
+		if (str[i] != delim && (str[i + 1] == delim || str[i + 1]  ==
+					'\t' || str[i + 1] == '\0'))
+			count++;
 		i++;
 	}
-	return (num_delm);
+	return (count);
 }
-
 /**
- * ignore_delm - returns a version of string without preceeding delims
- * @str: string
- * @delm: delimiter (e.g. " ")
- * Return: new string (e.g. "    ls -l" --> "ls -l")
+ * _wrdlen - returns the lenght of a word
+ * @s: pointer to s
+ * @delim: delimiter
+ * Return: lenght
  */
-char *ignore_delm(char *str, char delm)
+int _wrdlen(char *s, char delim)
 {
-	while (*str == delm)
-		str++;
-	return (str);
+	int c = 0; /* count  */
+
+	while (*(s + c) != delim && *(s + c) != '\0' && *(s + c) != '\t')
+		c++;
+	return (c);
 }
-
 /**
- * _str_tok - tokenizes a string and returns an array of tokens
- * @str: user's command typed into shell
- * @delm: delimeter (e.g. " ");
- * Return: an array of tokens (e.g. {"ls", "-l", "/tmp"}
+ * strtow - splits a string into words
+ * @str: string to break
+ * @delim: delimiter
+ * Return: array of strings(words)
  */
-char **_str_tok(char *str, char *delm)
+char **strtow(char *str, char delim)
 {
-	int buffsize = 0, p = 0, si = 0, i = 0, len = 0, se = 0, t = 0;
-	char **toks = NULL, d_ch;
+	int i, j, k, h, c, len;
+	char **words;
 
-	d_ch = delm[0];
-	/* creates new version of string ignoring all delims infront*/
-	str = ignore_delm(str, d_ch);
-	/* malloc ptrs to store array of tokens (buffsize + 1), and NULL ptr */
-	buffsize = t_size(str, d_ch);
-	toks = malloc(sizeof(char *) * (buffsize + 2));
-	if (toks == NULL)
+	if (str == NULL || str[0] == '\0')
 		return (NULL);
-	while (str[se] != '\0')	/* find string ending index */
-		se++;
-	while (si < se)
-	{ /* malloc lengths for each token ptr in array */
-		if (str[si] != d_ch)
+	c = count_words(str, delim);
+	if (c == 0)
+		return (NULL);
+	words = malloc(sizeof(char *) * (c + 1));
+	if (words == NULL)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (str[i] != '\0')
+	{
+		while ((str[i] == delim || str[i] == '\t') && str[i] != '\0')
+			i++;
+		if (str[i] == '\0')
 		{
-			len = t_strlen(str, si, d_ch);
-			toks[p] = malloc(sizeof(char) * (len + 1));
-			if (toks[p] == NULL)
-				return (NULL);
-			i = 0;
-			while ((str[si] != d_ch) && (str[si] != '\0'))
-			{
-				toks[p][i] = str[si];
-				i++;
-				si++;
-			}
-			toks[p][i] = '\0'; /* null terminate at end*/
-			t++;
+			words[j] = NULL;
+			return (words);
 		}
-		/* handle repeated delimeters; increment ptr after ("ls __-l")*/
-		if (si < se && (str[si + 1] != d_ch && str[si + 1] != '\0'))
-			p++;
-		si++;
+		words[j] = malloc(sizeof(char) * (_wrdlen(str + i, delim) + 1));
+		if (words[j] == NULL)
+		{
+			for (k = j - 1; k >= 0; k--)
+				free(words[k]);
+			free(words);
+			return (NULL);
+		}
+		len = _wrdlen(str + i, delim);
+		for (h = 0; h < len && str[i] != '\0'; h++, i++)
+			words[j][h] = str[i];
+		words[j][h] = '\0';
+		j++;
 	}
-	p++;
-	toks[p] = NULL; /* set last array ptr to NULL */
-	return (toks);
+	words[j] = NULL;
+	return (words);
 }
