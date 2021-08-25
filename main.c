@@ -1,24 +1,18 @@
-#include "shell1.h"
+#include "shell.h"
+
 /**
- * main - Entry Point to Shell
- * Return: Always 0 on success
+ * main - creates a simple shell
+ * @ac: argument count
+ * @av: argument vectors
+ * @env: environmental variables
+ * Return: 0 on success
  */
-int main(void)
+int main(int ac, char **av, char **env)
 {
-	char *buffer, *line;
-	list_t *env_head;
-	int ret_val;
+	(void)ac;
+	(void)av;
 
-	/* create a buffer to store input */
-	buffer = malloc(sizeof(char) * BUFF_SIZE);
-	if (buffer == NULL)
-		return (1);
-	line = NULL;
-	env_head = array_to_list(environ);
-	/* call cmd_line_loop */
-	ret_val = cmd_line_loop(buffer, line, &env_head);
+	prompt(env);
 
-	free_list(env_head);
-	free(buffer);
-	return (ret_val);
+	return (0);
 }
