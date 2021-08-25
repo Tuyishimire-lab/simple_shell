@@ -118,7 +118,7 @@ int prompt(char **en)
 			free(n_command);
 			continue;
 		}
-		token = NULL; 
+		token = NULL;
 		token = _str_tok(command, " "); /*token user cmd*/
 		if (n_command != NULL)
 			free(n_command);
