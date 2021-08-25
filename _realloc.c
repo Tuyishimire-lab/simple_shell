@@ -26,9 +26,9 @@ if (ptr == NULL) /* malloc new size if ptr is originally null */
 {
 p = malloc(new_size);
 if (p == NULL)
-        return (NULL);
-        else
-        return (p);
+return (NULL);
+else
+return (p);
 }
 
 p = malloc(new_size); /* malloc and check error */
