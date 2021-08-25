@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "shell1.h"
 /**
  * count_words - counts separate words in string
  * @str: pointer to s
