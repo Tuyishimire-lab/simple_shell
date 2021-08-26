@@ -7,9 +7,9 @@ shell can be limited.
 It doesn't handle piping,redirecting,pattern matching,variable expansions and
 more other functions.
 
-Simple shell can be invoked when the user types ./simple_shell as well as
+Simple shell can be invoked when the user types ./shell as well as
 the shell shell can be invoked ia piping example:
-(echo "/bin/ls" | ./simple_shell)
+(echo "/bin/ls" | ./shell)
 
 So when the command have been splited into words and found out that its a
 simple command and an optional list of arguments, the following actions are
